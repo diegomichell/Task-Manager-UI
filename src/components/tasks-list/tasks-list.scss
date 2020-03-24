@@ -1,0 +1,30 @@
+.tasks-list {
+  margin-bottom: 50px;
+
+  .tasks-title {
+    margin-bottom: 20px;
+  }
+
+  .tasks-description {
+    &.task-completed {
+      text-decoration: line-through;
+    }
+  }
+
+  .mark-as-complete {
+    display: flex;
+    font-size: 2em;
+    cursor: pointer;
+
+    &.task-completed {
+      color: green;
+    }
+  }
+
+  .task-menu {
+    .dropdown-item.disabled {
+      font-size: 14px;
+    }
+  }
+
+}

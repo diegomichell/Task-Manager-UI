@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://diego-task-manager.herokuapp.com';

@@ -1,0 +1,11 @@
+.dotted-toggle {
+  padding: 5px;
+  display: table-caption;
+  font-size: 5px;
+
+  &:hover {
+    text-decoration: none;
+    background: #ededed;
+    border-radius: 8px;
+  }
+}
