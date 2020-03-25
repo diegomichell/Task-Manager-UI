@@ -24,15 +24,13 @@ export default {
 
         return await r.json();
     },
-    logout: async (token: string): Promise<Login> => {
-        const r = await fetch(`${BASE_URL}/users/logout`, {
+    logout: async (token: string): Promise<void> => {
+        await fetch(`${BASE_URL}/users/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
         });
-
-        return await r.json();
     }
 }
