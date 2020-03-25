@@ -8,11 +8,14 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 export default function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
-
   // @ts-ignore
+  const isReduxToolsEnabled: any = window.__REDUX_DEVTOOLS_EXTENSION__ || false;
+
   const store = createStore(
     rootReducer,
-    compose(applyMiddleware(sagaMiddleware), composeWithDevTools())
+    isReduxToolsEnabled ?
+      compose(applyMiddleware(sagaMiddleware), composeWithDevTools())
+      : applyMiddleware(sagaMiddleware)
   );
 
   sagaMiddleware.run(rootSaga);
