@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import PropTypes from 'prop-types';
 import {IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline} from "react-icons/io";
-import {Button, Dropdown, Form, ListGroup, ListGroupItem} from "react-bootstrap";
+import {Button, Col, Dropdown, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import {Task} from "../../types";
 import TaskActions from "../../actions/TaskActions";
 import DottedToggle from "../ui-kit/dotted-toggle";
@@ -40,13 +40,18 @@ const TaskItem = ({task, removeTask, markAsComplete, updateTask}) => {
                 <Form.Control defaultValue={task.description} required name="description" type="text"
                               placeholder="Task description..."/>
               </Form.Group>
-
-              <Button onClick={() => setEditable(false)} block variant="outline-primary" type="button">
-                Cancel
-              </Button>
-              <Button block variant="primary" type="submit">
-                Save
-              </Button>
+              <Row>
+                <Col className="mb-2" md={6}>
+                  <Button onClick={() => setEditable(false)} block variant="outline-primary" type="button">
+                    Cancel
+                  </Button>
+                </Col>
+                <Col md={6}>
+                  <Button block variant="primary" type="submit">
+                    Save
+                  </Button>
+                </Col>
+              </Row>
             </Form>
           </div>
         )
