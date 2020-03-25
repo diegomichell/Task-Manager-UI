@@ -61,7 +61,7 @@ const TaskItem = ({task, removeTask, markAsComplete, updateTask}) => {
               {task.description}
             </span>
 
-            <Dropdown className="float-right task-menu">
+            <Dropdown drop="right" className="float-right task-menu">
               <Dropdown.Toggle as={DottedToggle} id="dropdown-basic"/>
 
               <Dropdown.Menu>
