@@ -37,10 +37,11 @@ const TaskItem = ({task, removeTask, markAsComplete, updateTask}) => {
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicDescription">
                 <Form.Label>Description</Form.Label>
-                <Form.Control defaultValue={task.description} required name="description" type="text" placeholder="Task description..."/>
+                <Form.Control defaultValue={task.description} required name="description" type="text"
+                              placeholder="Task description..."/>
               </Form.Group>
 
-              <Button onClick={() => setEditable(false)} block variant="primary" type="button">
+              <Button onClick={() => setEditable(false)} block variant="outline-primary" type="button">
                 Cancel
               </Button>
               <Button block variant="primary" type="submit">
@@ -85,10 +86,10 @@ const TasksList = (props) => {
       <h3 className="tasks-title">{props.title}</h3>
 
       <ListGroup>
-        {tasks.map((task: Task) => {
-          return <TaskItem key={task._id} task={task} updateTask={props.updateTask}
-                           markAsComplete={props.markAsComplete} removeTask={props.removeTask}/>
-        })}
+        {tasks.map((task: Task) =>
+          <TaskItem key={task._id} task={task} updateTask={props.updateTask}
+                    markAsComplete={props.markAsComplete} removeTask={props.removeTask}/>
+        )}
       </ListGroup>
     </div>
   )
