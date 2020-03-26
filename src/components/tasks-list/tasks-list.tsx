@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import PropTypes from 'prop-types';
-import {IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline} from "react-icons/io";
+import {IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline, IoMdDocument} from "react-icons/io";
 import {Button, Col, Dropdown, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 import {Task} from "../../types";
 import TaskActions from "../../actions/TaskActions";
@@ -89,13 +89,21 @@ const TasksList = (props) => {
   return (
     <div className="tasks-list">
       <h3 className="tasks-title">{props.title}</h3>
+      {tasks.length ? (
+        <ListGroup>
+          {tasks.map((task: Task) =>
+            <TaskItem key={task._id} task={task} updateTask={props.updateTask}
+                      markAsComplete={props.markAsComplete} removeTask={props.removeTask}/>
+          )}
+        </ListGroup>
+      ) : (
+        <p className="text-center">
+          No tasks added
+          <br/>
+          <IoMdDocument className="empty-tasks-icon"/>
+        </p>
+      )}
 
-      <ListGroup>
-        {tasks.map((task: Task) =>
-          <TaskItem key={task._id} task={task} updateTask={props.updateTask}
-                    markAsComplete={props.markAsComplete} removeTask={props.removeTask}/>
-        )}
-      </ListGroup>
     </div>
   )
 };
