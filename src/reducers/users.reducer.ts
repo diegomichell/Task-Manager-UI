@@ -3,7 +3,8 @@ import ACTION_TYPES from '../actions/action-types';
 const initialState = {
   user: null,
   token: null,
-  auth_error: null
+  auth_error: null,
+  create_user_error: null
 };
 
 const users = (state = initialState, action: any) => {
@@ -20,6 +21,11 @@ const users = (state = initialState, action: any) => {
       return {
         ...state,
         auth_error: action.payload.error
+      };
+    case ACTION_TYPES.CREATE_USER_FAILED:
+      return {
+        ...state,
+        create_user_error: action.payload.error
       };
     default:
       return state

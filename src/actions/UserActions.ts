@@ -34,10 +34,26 @@ export default {
       }
     }
   },
+  createUserFailed: (error: string) => {
+    return {
+      type: ACTION_TYPES.CREATE_USER_FAILED,
+      payload: {
+        error
+      }
+    }
+  },
   serviceLogout: () => {
     return {
       type: ACTION_TYPES.SERVICE_LOGOUT,
       payload: {}
+    }
+  },
+  serviceCreateUser: (user: User) => {
+    return {
+      type: ACTION_TYPES.SERVICE_CREATE_USER,
+      payload: {
+        user
+      }
     }
   }
 }

@@ -21,7 +21,7 @@ export default function configureStore() {
   sagaMiddleware.run(rootSaga);
 
   if (localStorage.token) {
-    store.dispatch(UserActions.login(localStorage.user, localStorage.token));
+    store.dispatch(UserActions.login(JSON.parse(localStorage.user), localStorage.token));
   }
 
   return store;

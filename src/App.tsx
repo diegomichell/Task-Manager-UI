@@ -6,11 +6,13 @@ import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 import ProtectedRoute from "./components/protected-route/protected-route";
 import About from "./components/about/about";
 import Login from "./components/login/login";
+import Register from "./components/register/register";
 import UserActions from "./actions/UserActions";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 
 function App(props: any) {
+  console.log(props.user);
   return (
     <Router>
       <div className="App">
@@ -23,11 +25,16 @@ function App(props: any) {
               <Link className="nav-link" role="button" to="/about">About</Link>
             </Nav>
             {props.isAuthenticated && (
-              <a onClick={() => {
-                props.logout();
-              }} href="#" className="nav-link text-danger">
-                Logout
-              </a>
+              <>
+                <a className="nav-link text-dark">
+                  {props.user.name}
+                </a>
+                <a onClick={() => {
+                  props.logout();
+                }} href="#" className="nav-link text-danger">
+                  Logout
+                </a>
+              </>
             )}
           </Navbar.Collapse>
         </Navbar>
@@ -46,6 +53,9 @@ function App(props: any) {
                 <Route path="/login">
                   <Login/>
                 </Route>
+                <Route path="/register">
+                  <Register/>
+                </Route>
                 <Redirect exact from="/" to="/home"/>
                 <Route path='*' exact={true} >
                   <h1>Page Not Found</h1>
@@ -61,6 +71,7 @@ function App(props: any) {
 
 const mapStateToProps = ({users}: any) => {
   return {
+    user: users.user,
     isAuthenticated: users.token !== null
   }
 };
