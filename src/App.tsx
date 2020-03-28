@@ -11,8 +11,7 @@ import UserActions from "./actions/UserActions";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 
-function App(props: any) {
-  console.log(props.user);
+export function App(props: any) {
   return (
     <Router>
       <div className="App">
