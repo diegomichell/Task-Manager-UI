@@ -25,7 +25,7 @@ export function App(props: any) {
             </Nav>
             {props.isAuthenticated && (
               <>
-                <a className="nav-link text-dark">
+                <a className="nav-link user-nav-link text-dark">
                   {props.user.name}
                 </a>
                 <a onClick={() => {
