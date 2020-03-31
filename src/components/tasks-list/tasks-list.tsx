@@ -11,7 +11,7 @@ import moment from "moment";
 
 import "./tasks-list.scss";
 
-const TaskItem = ({task, removeTask, markAsComplete, updateTask}) => {
+export const TaskItem = ({task, removeTask, markAsComplete, updateTask}) => {
   const [editable, setEditable] = useState(false);
   const [validated, setValidated] = useState(false);
 
@@ -83,7 +83,7 @@ const TaskItem = ({task, removeTask, markAsComplete, updateTask}) => {
   )
 };
 
-const TasksList = (props) => {
+export const TasksList = (props) => {
   const tasks: Task[] = props.tasks;
 
   return (
@@ -110,7 +110,17 @@ const TasksList = (props) => {
 
 TasksList.propTypes = {
   title: PropTypes.string.isRequired,
-  tasks: PropTypes.array.isRequired
+  tasks: PropTypes.array.isRequired,
+  markAsComplete: PropTypes.func,
+  removeTask: PropTypes.func,
+  updateTask: PropTypes.func
+};
+
+TaskItem.propTypes = {
+  task: PropTypes.object.isRequired,
+  markAsComplete: PropTypes.func,
+  removeTask: PropTypes.func,
+  updateTask: PropTypes.func
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
